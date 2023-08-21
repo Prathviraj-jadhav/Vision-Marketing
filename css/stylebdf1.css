@@ -40,9 +40,11 @@ html {
 
 
 body,html {
-    overscroll-behavior: none;
+    overflow-x: hidden;
     scroll-behavior: auto;
-    scrollbar-width: none
+    scrollbar-width: none;
+    overscroll-behavior: none;
+    
 }
 
 ::-webkit-scrollbar {
@@ -572,8 +574,10 @@ canvas.gl {
 
 #hero-wrapper {
     margin-left: 6.6666666667vw;
-    padding-top: 40vw;
+    padding-top: 0.4vw;
+    
     width: 89.3333333333vw
+    
 }
 
 #scroll-hint--hero {
@@ -591,111 +595,168 @@ canvas.gl {
     width: 3.7333333333vw
 }
 
-#nav {
-    height: 77.6vw;
-    width: 63.7333333333vw
+/* Nav Bar */
+
+/* Primary Header */
+.flex{
+    display: flex;
+    gap: var(--gap, 16rem);
 }
 
-#nav-btn {
-    height: 12.5333333333vw;
-    right: 6.4vw;
-    top: 23.2vw;
-    transform: scaleX(0);
-    width: 12.5333333333vw
+.grid{
+    display: grid;
+    gap: var(--gap, 1rem);
+
 }
 
-#nav-btn:after,#nav-btn:before {
-    background: #fff;
-    content: "";
-    display: block;
-    height: 2px;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transition: transform .7s cubic-bezier(.19,1,.22,1);
-    width: 12.5333333333vw
+.logo1{
+  
+    z-index: -1;
+    height: 6.9rem;   
+    width: 36rem;
+    border: 0;
+    top: 7.4rem;
+    right: 1rem;
+    margin-left: 50px;
+   
+    padding-bottom: 2.5rem;
+
+  
 }
 
-#nav-btn:before {
-    transform: translate3d(-50%,-300%,0)
+@media (max-width:35em){
+    .logo1{
+  
+        z-index: -1;
+        height: 5.5rem;   
+        width: 17.5rem;
+        border: 0;
+        top: 7rem;
+        right: 1rem;
+        margin-left: 2.5px;
+       
+        padding-bottom: 2.5rem;
+    
+      
+    }}
+
+
+
+.primary-header{
+    align-items: center;
+    justify-content: space-between;
+
 }
 
-#nav-btn:after {
-    transform: translate3d(-50%,300%,0)
+.primary-navigation{
+ list-style: none;
+ padding: 0px;
+ 
 }
 
-#nav-btn.active:after,#nav-btn.active:before {
-    background-color: #232325
-}
-
-#nav-btn.active:before {
-    transform: translate3d(-50%,0,0) scale(.5) rotate(45deg)
-}
-
-#nav-btn.active:after {
-    transform: translate3d(-50%,0,0) scale(.5) rotate(-45deg)
-}
-
-#nav-bg {
-    background: #c0f203;
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform .7s cubic-bezier(.19,1,.22,1)
-}
-
-#nav-bg.active {
-    transform: scaleY(1)
-}
-
-#nav-dash {
-    border-bottom: 1px dashed #d8d8d8;
+.mobile-nav-toggle{
     display: none;
-    opacity: .7;
-    transform: scaleX(0);
-    transform-origin: 0 0
+    
 }
 
-#nav-list {
-    opacity: 0;
-    padding-left: 5.8666666667vw;
-    padding-top: 47.7333333333vw;
-    pointer-events: none;
-    transition: opacity .7s cubic-bezier(.19,1,.22,1)
+.primary-navigation:hover:{
+    color: #c2f703;
 }
 
-#nav-list.active {
-    opacity: 1;
-    pointer-events: all
+
+.primary-navigation a{
+    color: whitesmoke;
+    text-decoration: none;
+   
 }
 
-.nav-item {
-    color: #232325;
-    font-size: 2.9333333333vw;
-    line-height: 121%;
-    margin-bottom: 6.4vw;
-    opacity: .89
+.primary-navigation a>[aria-hidden="true"]{
+    font-weight: 500;
+    margin-inline-end: 0.75rem;
+   
+    
 }
 
-.nav-item:hover .nav-txt,.nav-item:hover .nav-txt--after {
-    transform: translateY(-120%)
+.primary-navigation a:hover{
+    color: #c2f703;
 }
 
-.nav-txt,.nav-txt--after {
-    transition: transform 1s cubic-bezier(.19,1,.22,1)
+
+@media (max-width:35em){
+    .primary-navigation{
+       
+        --gap: 2em;
+        position: fixed;
+        z-index: 1000; 
+        inset: 0 0 0 30%;
+        flex-direction: column;
+        padding: min(30vh, 10rem)2em;
+        background: hsl(0, 0%, 80%, 0.25 );
+        backdrop-filter: blur(1.7rem);
+       
+        transform: translateX(100%);
+        transition: transform 350ms ease-out;
+
+    }
+
+    
+
+    .primary-navigation[data-visible="true"]{
+        transform: translateX(0%);
+
+    }
+
+    
+
+    .mobile-nav-toggle{
+      
+      position: absolute;
+      display: block;
+      z-index: 9999;
+      background-color: transparent;
+      background-image: url("../static/logos/bars-solid.svg") ;
+      background-repeat: no-repeat;
+      width: 2rem;
+      aspect-ratio: 1;
+      border: 0;
+      top: 7rem;
+      right: 2rem;
+
+    }
+
+    @supports (backdrop-filter: blur(1rem)){
+        .primary-navigation{
+            background: hsl(0, 0%, 80%, 0.25);
+            backdrop-filter: blur(1.7rem);
+        }
+    }
+    
+    .mobile-nav-toggle[aria-expanded="true"]{
+        background-image: url(../static/logos/xmark-solid.svg);
+    }
+
 }
 
-.nav-txt--after {
+
+
+/* Nav Bar End */
+
+
+
+
+
+.nav1-txt--after {
     bottom: -120%;
     right: 0
 }
 
-.nav-arr {
+.nav1-arr {
     height: 2.9333333333vw;
     margin-right: 3.2vw;
     width: 3.7333333333vw
 }
 
-#hero-arr,.nav-arr--d {
+#hero-arr,.nav1-arr--d {
     display: none
 }
 
@@ -1370,7 +1431,7 @@ canvas.gl {
     transform: none
 }
 
-#noz-logo {
+#noz-   {
     bottom: 22.4vw;
     height: 12vw;
     left: 6.6666666667vw;
@@ -1465,20 +1526,11 @@ canvas.gl {
         display: none
     }
 
-    #logo {
-        height: 1.9444444444vw;
-        margin-left: 4.4444444444vw;
-        margin-top: 1.3888888889vw;
-        width: 14.1666666667vw
-    }
-
-    #logo-inner {
-        bottom: -2px
-    }
-
+  
+   
     #hero-wrapper {
         margin-left: 31.7361111111vw;
-        padding-top: 0;
+        padding-top: 0.1vw;
         width: 63.9583333333vw
     }
 
@@ -1494,7 +1546,7 @@ canvas.gl {
         width: 1.25vw
     }
 
-    #nav {
+    #nav1 {
         height: unset;
         margin-bottom: 11.9444444444vw;
         padding-top: 2.3611111111vw;
@@ -1502,15 +1554,15 @@ canvas.gl {
         width: unset
     }
 
-    #nav-bg,#nav-btn {
+    #nav1-bg,#nav1-btn {
         display: none
     }
 
-    #nav-dash {
+    #nav1-dash {
         display: block
     }
 
-    #nav-list {
+    #nav1-list {
         flex-direction: row;
         margin-bottom: 1.9444444444vw;
         opacity: 1;
@@ -1518,27 +1570,27 @@ canvas.gl {
         pointer-events: all
     }
 
-    .nav-item {
+    .nav1-item {
         color: #fff;
         font-size: .7638888889vw;
         margin: 0
     }
 
-    .nav-arr {
+    .nav1-arr {
         height: .7638888889vw;
         margin-right: .8333333333vw;
         width: .9722222222vw
     }
 
-    .nav-arr svg {
+    .nav1-arr svg {
         transform: translateY(100%)
     }
 
-    .nav-arr--d {
+    .nav1-arr--d {
         display: block
     }
 
-    .nav-arr--m {
+    .nav1-arr--m {
         display: none
     }
 
