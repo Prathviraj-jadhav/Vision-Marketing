@@ -1495,7 +1495,8 @@ canvas.gl {
     }
 
     #hero {
-        min-height: calc(var(--screen-y, 70vh) + 2.08333vw);
+        min-height: calc(var(--screen-y, 30vh) + 2.08333vw);
+        /* min-height: calc(var(--screen-y, 100vh) + 2.08333vw); */
         padding-bottom: 9.0972222222vw;
         padding-top: 9.9305555556vw
     }
